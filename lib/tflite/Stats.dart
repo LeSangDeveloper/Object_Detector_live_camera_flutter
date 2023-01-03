@@ -4,13 +4,13 @@ class Stats {
   int totalPredictTime;
   int totalElapsedTime;
   int inferenceTime;
-  int preprocessingTime;
+  int preProcessingTime;
 
   Stats({
     this.totalPredictTime=0,
     this.totalElapsedTime=0,
     this.inferenceTime=0,
-    this.preprocessingTime=0
+    this.preProcessingTime=0
   });
 
   @override

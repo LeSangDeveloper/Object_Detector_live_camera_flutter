@@ -9,6 +9,12 @@ class IsolateUtils {
   final ReceivePort _receivePort = ReceivePort();
   late SendPort _sendPort;
 
+  Isolate get isolate => _isolate;
+
+  ReceivePort get receivePort => _receivePort;
+
+  SendPort get sendPort => _sendPort;
+
   Future<void> startAsync() async {
     _isolate = await Isolate.spawn<SendPort>(entryPointAsync, _receivePort.sendPort, debugName: DEBUG_NAME);
 
@@ -23,13 +29,13 @@ class IsolateUtils {
 
     }
   }
-
 }
 
 class IsolateData {
   CameraImage cameraImage;
   int interpreterAddress;
   List<String> labels;
+  SendPort? responsePort;
 
   IsolateData(this.cameraImage, this.interpreterAddress, this.labels);
 }
